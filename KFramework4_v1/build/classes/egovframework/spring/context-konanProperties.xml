@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd">
+
+	<bean name="konanPropertiesService" class="egovframework.rte.fdl.property.impl.EgovPropertyServiceImpl" destroy-method="destroy">
+		<property name="properties">
+	        <map>
+	        	<entry key="url" value="http://10.10.20.237:37577/search"/>
+	        	<entry key="charset" value="UTF-8" />
+	        	<entry key="site" value="KONAN" /> <!-- 사이트명 -->
+	        	
+				<entry key="ksfUrl" value="http://10.10.20.237:37614/ksf/api/" />
+				<entry key="ksfDomain" value="0" />
+				<entry key="ksfMaxResult" value="10" />
+				
+				<!-- 운영(true)/개발(false) 라이선스 구분-->
+				<entry key="realLic" value="false" />
+				
+				<entry key="pageSize" value="10" />
+				<entry key="pageSizeTotal" value="3" />
+				
+				<!-- 검색대상 : board -->	
+				<entry key="boardField" value="doc_seq,title,content,regdate,year,writer,fullpath,thumbnail" /><!-- 필드명 -->				
+				<entry key="boardFrom" value="board.board" /> <!-- 볼륨.테이블 -->
+				<entry key="boardHilight" value="{'title':{'length':100,'begin':'&lt;mark&gt;','end':'&lt;/mark&gt;'}},
+													{'content':{'length':300,'begin':'&lt;mark&gt;','end':'&lt;/mark&gt;'}},
+													{'fullpath':{'length':200,'begin':'&lt;mark&gt;','end':'&lt;/mark&gt;','complex':'MULTIPOINT','delim':'%23%23%40%40%23%23'}},
+													{'writer':{'length':50,'begin':'&lt;mark&gt;','end':'&lt;/mark&gt;'}}"/>
+					
+				<!-- 검색대상 : person -->	
+				<entry key="personField" value="prs_seq,prs_nm_ko,prs_nm_en,head_nm,dept_nm,role_nm,tree_data,picture,phone_no,mobile_no,email" /><!-- 필드명 -->				
+				<entry key="personFrom" value="person.person" /> <!-- 볼륨.테이블 -->
+				<entry key="personHilight" value="{'prs_nm_ko':{'length':50,'begin':'&lt;mark&gt;','end':'&lt;/mark&gt;'}}"/>
+					
+	        </map>
+		</property>		
+	</bean>					
+</beans>	
